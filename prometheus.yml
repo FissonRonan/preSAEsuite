@@ -1,0 +1,12 @@
+global:
+  scrape_interval: 10s # Limite de collecte définie dans le sujet
+
+scrape_configs:
+  - job_name: 'agents_audit'
+    static_configs:
+      - targets: ['host.docker.internal:9100']
+        labels:
+          machine: 'hote-principal'
+      - targets: ['agent-isole:9100']
+        labels:
+          machine: 'conteneur-isole'
